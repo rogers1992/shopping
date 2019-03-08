@@ -1,10 +1,8 @@
-from src.com.jalasoft.shoppingcar.view import home_view
-from src.com.jalasoft.shoppingcar.model import store_model
-from src.com.jalasoft.shoppingcar.controller import ccontroller_store
+from src.com.jalasoft.shoppingcar.view.home_view import HomeView
+from src.com.jalasoft.shoppingcar.model.store_model import StoreModel
+from src.com.jalasoft.shoppingcar.controller.controller_store import ControllerStore
 
-class Main:
-
-    def __init__(self):
+if __name__ == "__main__":
         view = HomeView()
         print("calling view")
         model = StoreModel()

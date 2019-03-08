@@ -4,3 +4,4 @@ class HomeView:
 
     def initUI(self):
         print("init UI")
+
