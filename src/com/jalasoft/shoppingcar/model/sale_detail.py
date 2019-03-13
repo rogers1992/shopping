@@ -12,6 +12,3 @@ class SaleDetail:
         for item in self.__item_list:
             total += item.get_price()
         return total
-
-    def print_detail(self):
-        pass

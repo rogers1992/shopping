@@ -8,3 +8,6 @@ class Sale:
 
     def remove_item(self, item):
         self.remove_item(item)
+
+    def get_item_all(self):
+        return self.__item_list
