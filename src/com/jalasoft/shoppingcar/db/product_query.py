@@ -1,5 +1,5 @@
 from src.com.jalasoft.shoppingcar.db.connection_db import ConnectionDB
-from src.com.jalasoft.shoppingcar.model.item import Item
+from src.com.jalasoft.shoppingcar.model.product import Product
 
 
 class ProductQuery:
@@ -8,7 +8,8 @@ class ProductQuery:
 
     def insertProduct(self, product):
         cursor = self.__conn.cursor()
-        insertQuery = "insert into product(name, price) values ('" + product.getProductName() + "', " + str(product.getPrice())+ ");"
+        insertQuery = "insert into product(id, name, price) values ('" + Product.get_id() + "', '" + Product.get_name() + "'," + str(
+            Product.get_price()) + ");"
         print(insertQuery)
         cursor.execute(insertQuery)
         self.__conn.commit()
@@ -19,9 +20,9 @@ class ProductQuery:
         rows = cursor.fetchall()
         productList = []
         for row in rows:
-            prod = Item()
+            prod = Product()
             prod.setProductName(row[0])
-            prod.setProductName(row[1])
+            prod.setProductPrice(row[1])
             productList.append(prod)
 
         return productList
