@@ -8,7 +8,7 @@ class ConnectionDB:
     def __init__(self):
         self.__exist = os.path.exists(self.dbName)
 
-    def getConnection(self):
+    def get_connection(self):
         conn = sqlite3.connect(self.dbName)
         c = conn.cursor()
         if not self.__exist:

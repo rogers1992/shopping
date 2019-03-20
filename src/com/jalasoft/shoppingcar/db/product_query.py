@@ -4,9 +4,9 @@ from src.com.jalasoft.shoppingcar.model.product import Product
 
 class ProductQuery:
     def __init__(self):
-        self.__conn = ConnectionDB().getConnection()
+        self.__conn = ConnectionDB().get_connection()
 
-    def insertProduct(self, product):
+    def insert_product(self, product):
         cursor = self.__conn.cursor()
         insertQuery = "insert into product(id, name, price) values ('" + Product.get_id() + "', '" + Product.get_name() + "'," + str(
             Product.get_price()) + ");"
@@ -14,7 +14,7 @@ class ProductQuery:
         cursor.execute(insertQuery)
         self.__conn.commit()
 
-    def loadAllProduct(self):
+    def load_all_product(self):
         cursor = self.__conn.cursor()
         cursor.execute("select id, name, price from product;")
         rows = cursor.fetchall()
