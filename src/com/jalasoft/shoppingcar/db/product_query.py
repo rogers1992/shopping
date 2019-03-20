@@ -16,13 +16,14 @@ class ProductQuery:
 
     def loadAllProduct(self):
         cursor = self.__conn.cursor()
-        cursor.execute("select name, price from product;")
+        cursor.execute("select id, name, price from product;")
         rows = cursor.fetchall()
         productList = []
         for row in rows:
             prod = Product()
-            prod.setProductName(row[0])
-            prod.setProductPrice(row[1])
+            prod.setProductId(row[0])
+            prod.setProductName(row[1])
+            prod.setProductPrice(row[2])
             productList.append(prod)
 
         return productList
