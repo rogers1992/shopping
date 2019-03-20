@@ -1,27 +1,29 @@
 from src.com.jalasoft.shoppingcar.db.connection_db import ConnectionDB
-from src.com.jalasoft.shoppingcar.model.item import Item
+from src.com.jalasoft.shoppingcar.model.product import Product
 
 
 class ProductQuery:
     def __init__(self):
-        self.__conn = ConnectionDB().getConnection()
+        self.__conn = ConnectionDB().get_connection()
 
-    def insertProduct(self, product):
+    def insert_product(self, product):
         cursor = self.__conn.cursor()
-        insertQuery = "insert into product(name, price) values ('" + product.getProductName() + "', " + str(product.getPrice())+ ");"
+        insertQuery = "insert into product(id, name, price) values ('" + Product.get_id() + "', '" + Product.get_name() + "'," + str(
+            Product.get_price()) + ");"
         print(insertQuery)
         cursor.execute(insertQuery)
         self.__conn.commit()
 
-    def loadAllProduct(self):
+    def load_all_product(self):
         cursor = self.__conn.cursor()
-        cursor.execute("select name, price from product;")
+        cursor.execute("select id, name, price from product;")
         rows = cursor.fetchall()
         productList = []
         for row in rows:
-            prod = Item()
-            prod.setProductName(row[0])
+            prod = Product()
+            prod.setProductId(row[0])
             prod.setProductName(row[1])
+            prod.setProductPrice(row[2])
             productList.append(prod)
 
         return productList
