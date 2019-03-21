@@ -1,16 +1,18 @@
 from src.com.jalasoft.shoppingcar.db.product_query import ProductQuery
+from src.com.jalasoft.shoppingcar.model.product import Product
+
 
 class Sale:
-    def __init__(self):
-        self.__product_list = {}
+    def __init__(self, product_dict):
+        self.__product_dict = product_dict
 
-    def add_product(self, product):
-        self.__product_list[product.get_id()] = product
+    def add_product(self, product: Product):
+        self.__product_dict[product.get_id()] = product
 
     def save_product(self, product):
         print(product)
         query = ProductQuery()
-        query.insertProduct(product)
+        query.insert_product(product)
 
     def remove_product(self, id_product):
         for key, value in dict(self.__product_list).items():
@@ -22,4 +24,4 @@ class Sale:
 
     def get_all_product(self):
         query = ProductQuery()
-        return query.loadAllProduct()
+        return query.load_all_product()
