@@ -8,8 +8,8 @@ class ProductQuery:
 
     def insert_product(self, product):
         cursor = self.__conn.cursor()
-        insertQuery = "insert into product(id, name, price) values ('" + Product.get_id() + "', '" + Product.get_name() + "'," + str(
-            Product.get_price()) + ");"
+        insertQuery = "insert into product(id, name, price) values ('" + str(product.get_id()) + "', '" + product.get_name() + "'," + str(
+            str(product.get_price())) + ");"
         print(insertQuery)
         cursor.execute(insertQuery)
         self.__conn.commit()
@@ -21,9 +21,9 @@ class ProductQuery:
         productList = []
         for row in rows:
             prod = Product()
-            prod.setProductId(row[0])
-            prod.setProductName(row[1])
-            prod.setProductPrice(row[2])
+            prod.set_id(row[0])
+            prod.set_name(row[1])
+            prod.set_price(row[2])
             productList.append(prod)
 
         return productList

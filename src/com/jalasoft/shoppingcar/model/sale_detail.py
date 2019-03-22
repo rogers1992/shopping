@@ -1,14 +1,14 @@
-from src.com.jalasoft.shoppingcar.model.item import Item
+from src.com.jalasoft.shoppingcar.model.product import Product
 
 
 class SaleDetail:
 
-    def __init__(self, item_list: Item):
-        self.__item_list = item_list
-        self.__quantity = self.__item_list.count(self)
+    def __init__(self, product_list: Product):
+        self.__product_list = product_list
+        self.__quantity = self.__product_list.count(self)
 
     def calculate_price_total(self):
         total = 0
-        for item in self.__item_list:
-            total += item.get_price()
+        for product in self.__product_list:
+            total += product.get_price()
         return total
