@@ -1,6 +1,6 @@
 from src.com.jalasoft.shoppingcar.view.home_view import HomeView
 from src.com.jalasoft.shoppingcar.model.store_model import StoreModel
-from src.com.jalasoft.shoppingcar.controller.controller_store import ControllerStore
+from src.com.jalasoft.shoppingcar.controller.CartController import ControllerStore
 
 if __name__ == "__main__":
         view = HomeView()
