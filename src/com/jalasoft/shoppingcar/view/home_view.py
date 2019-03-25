@@ -14,12 +14,12 @@ class HomeView(QMainWindow):
         self.top = 0
         self.width = 535
         self.height = 500
-        self.initUI()
+        #self.initUI()
 
-    def initUI(self):
+    def initUI(self, controller):
     #def initUI(self, controller):
         #self.__controller = controller      incluye el controlador
-
+        self.__controller = controller
         print("iniui")
 
         self.setWindowTitle(self.title)
@@ -38,8 +38,10 @@ class HomeView(QMainWindow):
         productMenu = QMenu("Product", self)
         prodOption.addMenu(productMenu)
 
-        shoppingCardOption = QAction("Shopping Card", self)
-        shopOption.addAction(shoppingCardOption)
+        """shoppingCardOption = QAction("Shopping Card", self)
+        shopOption.addAction(shoppingCardOption)"""
+        self.loadShoppingCardView()
+        self.__controller.loadProduct()
 
         insertOption = QAction("Insert", self)
         productMenu.addAction(insertOption)
@@ -49,22 +51,24 @@ class HomeView(QMainWindow):
         #insertOption.triggered.connect(lambda: self.loadInsertView())
         insertOption.triggered.connect(lambda: self.loadInsertView())
         #showOption.triggered.connect(lambda: self.loadMenuProduct())
-        shoppingCardOption.triggered.connect(lambda: self.loadShoppingCardView())
+        #shoppingCardOption.triggered.connect(lambda: self.loadShoppingCardView())
 
 
-        self.setCentralWidget(self.__getProductView())
+        #self.setCentralWidget(self.__getProductView())
         #self.setsetDownWidget(self.__getCheckOut())
 
     def __getProductView(self):
         print("prod")
-        proView = ProductView()
-        return proView
+        self.proView = ProductView()
+        return self.proView
         #self.__controller.addActionListener()
+
 
 
     def loadInsertView(self):
         self.setCentralWidget(InsertView())
-        #self.__controller.addActionListener()
+        self.__controller.addActionListener()
+        print("clicked new product")
 
     def loadShoppingCardView(self):
         self.setCentralWidget(self.__getProductView())
@@ -74,7 +78,8 @@ class HomeView(QMainWindow):
         self.setCentralWidget(self.ProductShowView())
         #self.__controller.addActionListener()
 
-
+    def getTableProduct(self):
+        return self.proView.getTable()
 
 class QtableWidget(object):
     pass

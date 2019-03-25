@@ -17,7 +17,7 @@ class InsertView(QWidget):
         self.quantity = QLineEdit()
         form.addRow(QLabel("Product Name:"), self.name)
         form.addRow(QLabel("Produt Price:"), self.price)
-        form.addRow(QLabel("Quantity:"), self.quantity)
+        #form.addRow(QLabel("Quantity:"), self.quantity)
         group.setLayout(form)
 
         self.saveButton = QPushButton("Save Product", self)
