@@ -4,6 +4,7 @@ class Product(object):
         self.__id = None
         self.__name = None
         self.__price = None
+        self.__quantity = None
 
     def get_id(self):
         return self.__id
@@ -22,4 +23,10 @@ class Product(object):
 
     def set_price(self, price):
         self.__price = price
+
+    def get_quantity(self):
+        return self.__quantity
+
+    def set_quantity(self, quantity):
+        self.__quantity = quantity
 
