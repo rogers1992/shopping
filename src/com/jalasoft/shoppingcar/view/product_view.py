@@ -30,7 +30,7 @@ class ProductView(QWidget):
         self.table.setSelectionBehavior(QAbstractItemView.SelectRows)
         self.table.setSelectionMode(QAbstractItemView.SingleSelection)
 
-        self.table.setItem(0, 0, QTableWidgetItem("0001"))
+        """self.table.setItem(0, 0, QTableWidgetItem("0001"))
         self.table.setItem(0, 1, QTableWidgetItem("pants"))
         self.table.setItem(0, 2, QTableWidgetItem("50"))
         self.table.setItem(0, 3, QTableWidgetItem("1"))
@@ -47,7 +47,7 @@ class ProductView(QWidget):
         self.table.setItem(3, 0, QTableWidgetItem("0004"))
         self.table.setItem(3, 1, QTableWidgetItem("Shirt"))
         self.table.setItem(3, 2, QTableWidgetItem("80"))
-        self.table.setItem(3, 3, QTableWidgetItem("1"))
+        self.table.setItem(3, 3, QTableWidgetItem("1"))"""
 
         self.table.move(0, 0)
         #group.setLayout(self.table)

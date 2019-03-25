@@ -1,8 +1,8 @@
 from PyQt5.QtWidgets import QTableWidgetItem, QLineEdit
-from src.com.jalasoft.test.view.product_insert_view import InsertView
+from src.com.jalasoft.shoppingcar.view.insert_view import InsertView
 from src.com.jalasoft.shoppingcar.view.product_view import ProductView
-from src.com.jalasoft.shoppingcar.model import Item
-
+from src.com.jalasoft.shoppingcar.model.product import Product
+from src.com.jalasoft.shoppingcar.model.sale import Sale
 
 class CartController:
 
@@ -16,15 +16,19 @@ class CartController:
         self.centralWidget = self.mainView.centralWidget()
         if isinstance(self.centralWidget, InsertView):
             self.centralWidget.getSaveProductButton().clicked.connect(lambda: self.saveProduct())
+            print("Saving product progress")
         if isinstance(self.centralWidget, ProductView):
             self.centralWidget.getAddTocartButton().clicked.connect(lambda: self.addToCart())
 
 
     def saveProduct(self):
-        pro = Item(self.centralWidget.getName(),self.centralWidget.getPrice())
-        #pro.setProductName(self.centralWidget.getName())
-        #pro.setPrice(self.centralWidget.getPrice())
-        self.cartModel.saveProduct(pro)
+        pro = Product()
+        pro.set_name(self.centralWidget.getName())
+        pro.set_price(self.centralWidget.getPrice())
+        print("print the product object")
+        print(pro)
+        self.cartModel.save_product(pro)
+        print("saving in database")
 
     def loadProduct(self):
         self.centralWidget = self.mainView.centralWidget()

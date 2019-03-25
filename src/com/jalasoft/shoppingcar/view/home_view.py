@@ -14,12 +14,12 @@ class HomeView(QMainWindow):
         self.top = 0
         self.width = 535
         self.height = 500
-        self.initUI()
+        #self.initUI()
 
-    def initUI(self):
+    def initUI(self, controller):
     #def initUI(self, controller):
         #self.__controller = controller      incluye el controlador
-
+        self.__controller = controller
         print("iniui")
 
         self.setWindowTitle(self.title)
@@ -52,7 +52,7 @@ class HomeView(QMainWindow):
         shoppingCardOption.triggered.connect(lambda: self.loadShoppingCardView())
 
 
-        self.setCentralWidget(self.__getProductView())
+        #self.setCentralWidget(self.__getProductView())
         #self.setsetDownWidget(self.__getCheckOut())
 
     def __getProductView(self):
@@ -64,7 +64,8 @@ class HomeView(QMainWindow):
 
     def loadInsertView(self):
         self.setCentralWidget(InsertView())
-        #self.__controller.addActionListener()
+        self.__controller.addActionListener()
+        print("clicked new product")
 
     def loadShoppingCardView(self):
         self.setCentralWidget(self.__getProductView())

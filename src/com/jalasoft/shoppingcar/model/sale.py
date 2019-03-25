@@ -1,41 +1,28 @@
+from src.com.jalasoft.shoppingcar.db.product_query import ProductQuery
 from src.com.jalasoft.shoppingcar.model.product import Product
 
 
 class Sale:
     def __init__(self):
-        self.__product_list = []
-        self.__total_price = None
-
-    def get_product_list(self):
-        return self.__product_list
-
-    def set_product_list(self, product_list):
-        self.__product_list = product_list
+        print("Sales model initiated")
+        #self.__product_dict = product_dict
 
     def add_product(self, product: Product):
-        if self.is_product_in_list(product.get_id()):
-            print("The product" + str(product.get_id()) + "exist!")
-        else:
-            self.__product_list.append(product)
+        self.__product_dict[product.get_id()] = product
 
-    def remove_product(self, product: Product):
-        if self.is_product_in_list(product.get_id()):
-            self.__product_list.remove(product)
-        else:
-            print("The product" + str(product.get_id()) + "not exist!")
+    def save_product(self, product):
+        print(product)
+        query = ProductQuery()
+        query.insert_product(product)
 
-    def calculate_price_total(self):
-        total_price = 0
-        for product in self.__product_list:
-            total_price += product.get_price()
-        self.__total_price = total_price
-        return self.__total_price
+    def remove_product(self, id_product):
+        for key, value in dict(self.__product_list).items():
+            if key == id_product:
+                del self.__product_list[id_product]
 
-    def is_product_in_list(self, id_prod):
-        for prod in self.__product_dict:
-            if id_prod == prod.get_id():
-                return True
+    def get_product_all(self):
+        return self.__product_list
 
-
-
-
+    def get_all_product(self):
+        query = ProductQuery()
+        return query.load_all_product()

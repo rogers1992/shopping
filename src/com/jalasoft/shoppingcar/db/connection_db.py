@@ -3,7 +3,7 @@ import sqlite3
 
 
 class ConnectionDB:
-    dbName = "test.db"
+    dbName = "Shopping.db"
 
     def __init__(self):
         self.__exist = os.path.exists(self.dbName)
@@ -12,6 +12,6 @@ class ConnectionDB:
         conn = sqlite3.connect(self.dbName)
         c = conn.cursor()
         if not self.__exist:
-            c.execute("CREATE TABLE IF NOT EXISTS PRODUCT(ID integer, name varchar(100), price real, primary key(ID));")
+            c.execute("CREATE TABLE IF NOT EXISTS PRODUCT(id integer, name varchar(100), price real, primary key(id));")
 
         return conn
