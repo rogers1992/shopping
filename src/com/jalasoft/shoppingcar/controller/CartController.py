@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QTableWidgetItem, QLineEdit
 from src.com.jalasoft.shoppingcar.view.insert_view import InsertView
 from src.com.jalasoft.shoppingcar.view.product_view import ProductView
 from src.com.jalasoft.shoppingcar.model.product import Product
-from src.com.jalasoft.shoppingcar.model.sale import Sale
+
 
 class CartController:
 
@@ -32,14 +32,15 @@ class CartController:
 
     def loadProduct(self):
         self.centralWidget = self.mainView.centralWidget()
-        listProduct = self.cartModel.getAllProduct()
+        listProduct = self.cartModel.get_all_product()
         listSize = len(listProduct)
+        print(len(listProduct))
         self.centralWidget.getTable().setRowCount(listSize)
         index = 0
         for prod in listProduct:
-            self.centralWidget.getTable().setItem(index, 0, QTableWidgetItem(str(prod.getId())))
-            self.centralWidget.getTable().setItem(index, 1, QTableWidgetItem(prod.getProductName()))
-            self.centralWidget.getTable().setItem(index, 2, QTableWidgetItem(str(prod.getPrice())))
+            self.centralWidget.getTable().setItem(index, 0, QTableWidgetItem(str(prod.get_id())))
+            self.centralWidget.getTable().setItem(index, 1, QTableWidgetItem(prod.get_name()))
+            self.centralWidget.getTable().setItem(index, 2, QTableWidgetItem(str(prod.get_price())))
             index = index + 1
 
     def addToCart(self):

@@ -15,18 +15,12 @@ class ProductShowView(QWidget):
         self.table = QTableWidget(self)
         self.table.setColumnCount(4)
         self.table.setHorizontalHeaderLabels(["Id","Product", "Quantity","Price"])
-        #self.table.setSelectionBehavior(QAbstractItemView.SelectRows)
-        #self.table.setSelectionMode(QAbstractItemView.SingleSelection)
+        self.table.setSelectionBehavior(QAbstractItemView.SelectRows)
+        self.table.setSelectionMode(QAbstractItemView.SingleSelection)
 
-        """self.addButton = QPushButton("Add to Cart", self)
-
-        self.cartTable = QTableWidget(self)
-        self.cartTable.setColumnCount(4)
-        self.cartTable.setHorizontalHeaderLabels(["ID", "Product Name", "Price", "Quantity"])
-"""
         vLayout.addWidget(self.table)
-       # vLayout.addWidget(self.addButton)
-        #vLayout.addWidget(self.cartTable)
+        vLayout.addWidget(self.addButton)
+        vLayout.addWidget(self.cartTable)
 
         self.setLayout(vLayout)
 

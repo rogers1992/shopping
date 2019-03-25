@@ -33,9 +33,3 @@ class ProductQuery:
         return productList
 
 
-prod = Product()
-prod.set_name("car1")
-prod.set_price(1074)
-query = ProductQuery()
-query.insert_product(prod)
-print(query.load_all_product())
