@@ -39,7 +39,7 @@ class ProductView(QWidget):
 
         #self.table.changeEvent(self.numberItem())
 
-        buttonA = QPushButton("Add")
+        buttonA = QPushButton("Add", self)
 
         self.table2 = QTableWidget()
         self.table2.setColumnCount(4)

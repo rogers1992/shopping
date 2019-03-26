@@ -18,7 +18,7 @@ class CartController:
             self.centralWidget.getSaveProductButton().clicked.connect(lambda: self.saveProduct())
             print("Saving product progress")
         if isinstance(self.centralWidget, ProductView):
-            self.centralWidget.getAddTocartButton().clicked.connect(lambda: self.addToCart())
+            self.centralWidget.getShowOption().clicked.connect(lambda: self.loadProduct())
 
 
     def saveProduct(self):

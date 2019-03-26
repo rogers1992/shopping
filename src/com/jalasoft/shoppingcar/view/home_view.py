@@ -33,7 +33,6 @@ class HomeView(QMainWindow):
 
         menuBar = self.menuBar()
         prodOption = menuBar.addMenu("Register")
-        shopOption = menuBar.addMenu("Shopping")
 
         productMenu = QMenu("Product", self)
         prodOption.addMenu(productMenu)
@@ -50,6 +49,8 @@ class HomeView(QMainWindow):
 
         #insertOption.triggered.connect(lambda: self.loadInsertView())
         insertOption.triggered.connect(lambda: self.loadInsertView())
+        showOption.triggered.connect(lambda: self.loadProductShowView())
+
         #showOption.triggered.connect(lambda: self.loadMenuProduct())
         #shoppingCardOption.triggered.connect(lambda: self.loadShoppingCardView())
 
@@ -63,7 +64,10 @@ class HomeView(QMainWindow):
         return self.proView
         #self.__controller.addActionListener()
 
-
+    def loadProductShowView(self):
+        self.setCentralWidget(ProductView())
+        self.__controller.loadProduct()
+        #self.__controller.addActionListener()
 
     def loadInsertView(self):
         self.setCentralWidget(InsertView())
@@ -80,6 +84,9 @@ class HomeView(QMainWindow):
 
     def getTableProduct(self):
         return self.proView.getTable()
+
+    def getShowOption(self):
+        return self.showOption
 
 class QtableWidget(object):
     pass
