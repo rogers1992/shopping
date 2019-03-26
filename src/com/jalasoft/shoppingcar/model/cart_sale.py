@@ -1,4 +1,4 @@
-from src.com.jalasoft.shoppingcar.db.product_query import SaleQuery
+from src.com.jalasoft.shoppingcar.db.product_sales import ProductSales
 
 
 class CartSale:
@@ -7,9 +7,12 @@ class CartSale:
 
     def save_sale(self, sale):
         print(sale)
-        query = SaleQuery()
+        query = ProductSales.total_sale()
         query.insert_sale(sale)
 
     def get_all_sales(self):
-        query = SaleQuery()
+        query = ProductSales.total_sale()
         return query.load_all_sale()
+
+
+
