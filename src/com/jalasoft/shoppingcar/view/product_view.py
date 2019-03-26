@@ -13,6 +13,10 @@ class ProductView(QWidget):
         print("aqui")
 
         vLayout = QVBoxLayout()
+
+
+
+
         #group = QGroupBox()
 
 
@@ -21,7 +25,7 @@ class ProductView(QWidget):
 
 
         #cb = QCheckBox('Show title', self)
-        self.table = QTableWidget()
+        self.table = QTableWidget()# table of Product
         #self.table = QtWidgets.QTableWidget()
         self.table.setColumnCount(4)
         #self.table.setRowCount()
@@ -39,22 +43,22 @@ class ProductView(QWidget):
 
         #self.table.changeEvent(self.numberItem())
 
-        buttonA = QPushButton("Add")
+        buttonAdd = QPushButton("Add") #button Add
 
-        self.table2 = QTableWidget()
+        self.table2 = QTableWidget() #table of shopping Cart
         self.table2.setColumnCount(4)
         self.table2.setHorizontalHeaderLabels(["Id","Product", "Quantity","Price"])
 
-        buttonC = QPushButton("Cancel")
-        buttonF = QPushButton("Chek Out")
+        buttonCan = QPushButton("Cancel")
+        buttonCO = QPushButton("Chek Out")
 
 
         #vLayout.addWidget(group)
         vLayout.addWidget(self.table)
-        vLayout.addWidget(buttonA)
+        vLayout.addWidget(buttonAdd)
         vLayout.addWidget(self.table2)
-        vLayout.addWidget(buttonC)
-        vLayout.addWidget(buttonF)
+        vLayout.addWidget(buttonCan)
+        vLayout.addWidget(buttonCO)
         self.setLayout(vLayout)
 
 
@@ -70,5 +74,11 @@ class ProductView(QWidget):
     def getCartTable(self):
         return self.table2
 
-    def getAddTocartButton(self):
-        return self.buttonA
+    def getAddTocartButton(self): #add product to shopping Cart
+        return self.buttonAdd
+
+    def getSaveButton(self): #Create shopping Cart
+        return self.buttonCO
+
+    def getCancelButton(self): #Clear shopping Cart
+        return self.buttonCan
