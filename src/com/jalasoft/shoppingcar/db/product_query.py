@@ -8,8 +8,8 @@ class ProductQuery:
 
     def insert_product(self, product):
         cursor = self.__conn.cursor()
-        insertQuery = "insert into product(name, price) values ('" + product.get_name() + "'," + str(
-            str(product.get_price())) + ");"
+        insertQuery = "insert into product(name, price, quantity) values ('" + product.get_name() + "'," + str(
+            str(product.get_price())) + product.get_quantity() + ");"
         # print(insertQuery)
         cursor.execute(insertQuery)
         self.__conn.commit()
