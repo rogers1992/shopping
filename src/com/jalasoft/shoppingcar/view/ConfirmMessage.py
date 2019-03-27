@@ -28,7 +28,7 @@ class App(QWidget):
         else:
             print('No clicked.')
 
-        #self.show()
+        self.show()
 
 
 if __name__ == '__main__':

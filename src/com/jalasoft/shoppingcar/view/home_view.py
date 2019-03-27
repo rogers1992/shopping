@@ -8,17 +8,18 @@ from PyQt5.QtCore import Qt
 
 class HomeView(QMainWindow):
     def __init__(self):
+
         super().__init__()
         self.title = 'Shopping - Product'
         self.left = 0
         self.top = 0
         self.width = 535
         self.height = 500
-        # self.initUI()
+        #self.initUI()
 
     def initUI(self, controller):
-        # def initUI(self, controller):
-        # self.__controller = controller      incluye el controlador
+    #def initUI(self, controller):
+        #self.__controller = controller      incluye el controlador
         self.__controller = controller
         print("iniui")
 
@@ -38,13 +39,12 @@ class HomeView(QMainWindow):
 
         menuBar = self.menuBar()
         prodOption = menuBar.addMenu("Register")
-        shopOption = menuBar.addMenu("Shopping")
 
         productMenu = QMenu("Product", self)
         prodOption.addMenu(productMenu)
 
-        shoppingCardOption = QAction("Shopping Card", self)
-        shopOption.addAction(shoppingCardOption)
+        """shoppingCardOption = QAction("Shopping Card", self)
+        shopOption.addAction(shoppingCardOption)"""
         self.loadShoppingCardView()
         self.__controller.loadProduct()
 
@@ -53,19 +53,27 @@ class HomeView(QMainWindow):
         showOption = QAction("Show", self)
         productMenu.addAction(showOption)
 
-        # insertOption.triggered.connect(lambda: self.loadInsertView())
+        #insertOption.triggered.connect(lambda: self.loadInsertView())
         insertOption.triggered.connect(lambda: self.loadInsertView())
-        #showOption.triggered.connect(lambda: self.loadMenuProduct())
-        # shoppingCardOption.triggered.connect(lambda: self.__controller.loadProduct())
+        showOption.triggered.connect(lambda: self.loadProductShowView())
 
-        # self.setCentralWidget(self.__getProductView())
-        # self.setsetDownWidget(self.__getCheckOut())
+        #showOption.triggered.connect(lambda: self.loadMenuProduct())
+        #shoppingCardOption.triggered.connect(lambda: self.loadShoppingCardView())
+
+
+        #self.setCentralWidget(self.__getProductView())
+        #self.setsetDownWidget(self.__getCheckOut())
 
     def __getProductView(self):
         print("prod")
         self.proView = ProductView()
         return self.proView
-        # self.__controller.addActionListener()
+        #self.__controller.addActionListener()
+
+    def loadProductShowView(self):
+        self.setCentralWidget(ProductView())
+        self.__controller.loadProduct()
+        #self.__controller.addActionListener()
 
     def loadInsertView(self):
         self.setCentralWidget(InsertView())
@@ -74,16 +82,17 @@ class HomeView(QMainWindow):
 
     def loadShoppingCardView(self):
         self.setCentralWidget(self.__getProductView())
-        # self.__controller.addActionListener()
+        #self.__controller.addActionListener()
 
     def loadMenuProduct(self):
-        self.setCentralWidget(self.ProductShowView(self))
-        self.__controller.loadProduct()
-        # self.__controller.addActionListener()
+        self.setCentralWidget(self.ProductShowView())
+        #self.__controller.addActionListener()
 
     def getTableProduct(self):
         return self.proView.getTable()
 
+    def getShowOption(self):
+        return self.showOption
 
 class QtableWidget(object):
     pass
