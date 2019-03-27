@@ -7,12 +7,11 @@ class CartSale:
 
     def save_sale(self, sale):
         print(sale)
-        query = ProductSales.total_sale()
+        query = ProductSales()
         query.insert_sale(sale)
 
     def get_all_sales(self):
-        query = ProductSales.total_sale()
+        query = ProductSales()
         return query.load_all_sale()
-
 
 
