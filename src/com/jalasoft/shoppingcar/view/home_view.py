@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QWidget, QFormLayout, QLabel, QLineEdit, QMenu, QMai
 from src.com.jalasoft.shoppingcar.view.product_view import ProductView
 from src.com.jalasoft.shoppingcar.view.menu_product_view import ProductShowView
 from src.com.jalasoft.shoppingcar.view.insert_view import InsertView
+from PyQt5.QtCore import Qt
 
 
 class HomeView(QMainWindow):
@@ -27,6 +28,11 @@ class HomeView(QMainWindow):
         self.__initComponet()
 
         self.show()
+
+        self.setAutoFillBackground(True)
+        p = self.palette()
+        p.setColor(self.backgroundRole(), Qt.lightGray)
+        self.setPalette(p)
 
     def __initComponet(self):
         print("com")
