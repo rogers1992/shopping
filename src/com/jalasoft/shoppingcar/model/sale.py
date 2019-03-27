@@ -1,4 +1,3 @@
-from src.com.jalasoft.shoppingcar.model.cart_sale import CartSale
 from src.com.jalasoft.shoppingcar.model.product import Product
 
 
@@ -36,8 +35,3 @@ class Sale:
         for prod in self.__product_dict:
             if id_prod == prod.get_id():
                 return True
-
-    list_prod = [1, 2, 3]
-    set_product_list(list_prod)
-    CartSale.save_sale()
-
