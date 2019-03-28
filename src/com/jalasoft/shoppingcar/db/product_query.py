@@ -6,6 +6,7 @@ class ProductQuery:
     def __init__(self):
         self.__conn = ConnectionDB().get_connection()
 
+    "Insertion the product on DB"
     def insert_product(self, product):
         cursor = self.__conn.cursor()
         insertQuery = "insert into product(name, price, quantity) values ('" + product.get_name() + "'," + str(
@@ -14,6 +15,7 @@ class ProductQuery:
         cursor.execute(insertQuery)
         self.__conn.commit()
 
+    "Loading all the products from DB"
     def load_all_product(self):
         cursor = self.__conn.cursor()
         cursor.execute("select id, name, price from product;")
